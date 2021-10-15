@@ -6,12 +6,30 @@ module.exports = class BinarySearchTree {
   root() {
     if (this.data == null) {
       return null;
+    } else {
+      return this.data;
     }
   }
 
-  add(/* data */) {
-    throw new NotImplementedError("Not implemented");
-    // remove line with error and write your code here
+  add(data) {
+    this.data = addItemData(this.data, data);
+
+    function addItemData(node, data) {
+      if (!node) {
+        return new Node(data);
+      }
+
+      if (data === node.data) {
+        return node;
+      }
+
+      if (data < node.data) {
+        node.left = addItemData(node.left, data);
+      } else {
+        node.right = addItemData(node.right, data);
+      }
+      return node;
+    }
   }
 
   has(/* data */) {
