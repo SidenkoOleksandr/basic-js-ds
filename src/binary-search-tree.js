@@ -117,4 +117,28 @@ module.exports = class BinarySearchTree {
       }
     }
   }
+
+  min() {
+    if (!this.data) {
+      return;
+    }
+
+    let node = this.data;
+    while (node.left) {
+      node = node.left;
+    }
+    return node.data;
+  }
+
+  max() {
+    if (!this.data) {
+      return null;
+    }
+
+    let node = this.data;
+    while (node.right) {
+      node = node.right;
+    }
+    return node.data;
+  }
 };
