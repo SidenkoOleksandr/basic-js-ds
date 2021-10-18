@@ -22,13 +22,24 @@ module.exports = class Queue {
     return this.queue;
   }
 
-  enqueue(/* value */) {
-    throw new NotImplementedError("Not implemented");
-    // remove line with error and write your code here
+  enqueue(value) {
+    let newNode = new ListNode(value);
+
+    if (!this.queue) {
+      this.queue = newNode;
+    } else {
+      let node = this.queue;
+      while (node.next) {
+        node = node.next;
+      }
+      node.next = newNode;
+    }
   }
 
   dequeue() {
-    throw new NotImplementedError("Not implemented");
-    // remove line with error and write your code here
+    let node = this.queue;
+    this.queue = this.queue.next;
+    node.next = null;
+    return node.value;
   }
 };
